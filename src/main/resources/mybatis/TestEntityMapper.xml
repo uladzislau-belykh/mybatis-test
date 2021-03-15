@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.ub.mybatistest.mapper.TestEntityMapper">
+
+
+    <resultMap id="testEntity" type="com.github.ub.mybatistest.domain.TestEntity">
+        <id column="id" property="id"/>
+        <result column="test" property="test"/>
+    </resultMap>
+
+    <insert
+            id="insert"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO test_entity
+        (
+            test)
+        VALUES
+        (
+            #{testEntity.test})
+    </insert>
+
+    <update id="update">
+        UPDATE test_entity SET
+                        test = #{testEntity.test}
+        WHERE
+            id = #{testEntity.id}
+    </update>
+
+</mapper>
